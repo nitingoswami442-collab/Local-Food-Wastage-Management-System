@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
-import ploty.express as px
+import plotly.express as px
 
 # Database Connection
 conn = sqlite3.connect("food_wastage.db", check_same_thread=False)
