@@ -12,6 +12,7 @@ st.title("🍲 Local Food Wastage Management System")
 menu = st.sidebar.selectbox(
     "Select Option",
     ["Home",
+     "Dashboard",
      "Food Listings",
      "Provider Contacts"
     ]
