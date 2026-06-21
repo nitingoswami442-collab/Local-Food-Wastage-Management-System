@@ -63,12 +63,12 @@ FROM claims
 GROUP BY Status
 """, conn)
 
-st.plotly_chart(
     fig = px.pie(
         claim_status,
         names="Status",
         values="Total",
         title="Claims by Status",
+        
         color_discrete_sequence=px.colors.qulitative.Set3
     )
     st.plotly_chart(fig,
