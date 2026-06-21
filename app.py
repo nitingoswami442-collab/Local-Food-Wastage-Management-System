@@ -71,7 +71,7 @@ fig = px.pie(
         
         color_discrete_sequence=px.colors.qulitative.Set3
     )
-    st.plotly_chart(fig,
+st.plotly_chart(fig,
     use_container_width=True)
 
 st.subheader("📊 Food Available by Type")
@@ -91,7 +91,7 @@ st.plotly_chart(
         title="Food Available by Type",
         color_discrete_sequence=px.colors.qulitative.Bold
     )
-    st.plotly_chart(fig,
+st.plotly_chart(fig,
     use_container_width=True)
 
 st.subheader("🏢 Listings by Provider Type")
@@ -111,7 +111,7 @@ st.plotly_chart(
         title="Listings by Provider Type",
         color_discrete_sequence=px.colors.qulitative.Set2
     )
-    st.plotly_chart(fig,
+st.plotly_chart(fig,
     use_container_width=True)
 
 st.subheader("🍽️ Claims by Meal Type")
@@ -131,5 +131,5 @@ st.plotly_chart(
         title="Claims by Meal Type",
         color_discrete_sequence=px.colors.qulitative.Pastel
     )
-    st.plotly_chart(fig,
+st.plotly_chart(fig,
     use_container_width=True)
