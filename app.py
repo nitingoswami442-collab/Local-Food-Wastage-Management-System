@@ -83,7 +83,6 @@ FROM food_listings
 GROUP BY Food_Type
 """, conn)
 
-st.plotly_chart(
     fig = px.bar(
         food_type,
         x="Food_Type",
@@ -103,7 +102,6 @@ FROM food_listings
 GROUP BY Provider_Type
 """, conn)
 
-st.plotly_chart(
     fig = px.bar(
         provider_type,
         x="Provider_Type",
@@ -123,7 +121,6 @@ FROM food_listings
 GROUP BY Meal_Type
 """, conn)
 
-st.plotly_chart(
     fig = px.pie(
         meal_type,
         names="Meal_Type",
