@@ -13,7 +13,7 @@ st.title("🍲 Local Food Wastage Management System")
 menu = st.sidebar.selectbox(
     "Select Option",
     ["🏡Home",
-     "Dashboard",
+     "📈Dashboard",
      "🍱Food Listings",
      "📡Provider Contacts"
     ]
@@ -64,14 +64,15 @@ GROUP BY Status
 """, conn)
 
 st.plotly_chart(
-    px.pie(
+    fig = px.pie(
         claim_status,
         names="Status",
         values="Total",
-        title="Claims by Status"
-    ),
-    use_container_width=True
-)
+        title="Claims by Status",
+        color_discrete_sequence=px.colors.qulitative.Set3
+    )
+    st.plotly_chart(fig,
+    use_container_width=True)
 
 st.subheader("📊 Food Available by Type")
 
@@ -83,14 +84,15 @@ GROUP BY Food_Type
 """, conn)
 
 st.plotly_chart(
-    px.bar(
+    fig = px.bar(
         food_type,
         x="Food_Type",
         y="Total",
-        title="Food Available by Type"
-    ),
-    use_container_width=True
-)
+        title="Food Available by Type",
+        color_discrete_sequence=px.colors.qulitative.Bold
+    )
+    st.plotly_chart(fig,
+    use_container_width=True)
 
 st.subheader("🏢 Listings by Provider Type")
 
@@ -102,14 +104,15 @@ GROUP BY Provider_Type
 """, conn)
 
 st.plotly_chart(
-    px.bar(
+    fig = px.bar(
         provider_type,
         x="Provider_Type",
         y="Total",
-        title="Listings by Provider Type"
-    ),
-    use_container_width=True
-)
+        title="Listings by Provider Type",
+        color_discrete_sequence=px.colors.qulitative.Set2
+    )
+    st.plotly_chart(fig,
+    use_container_width=True)
 
 st.subheader("🍽️ Claims by Meal Type")
 
@@ -121,11 +124,12 @@ GROUP BY Meal_Type
 """, conn)
 
 st.plotly_chart(
-    px.pie(
+    fig = px.pie(
         meal_type,
         names="Meal_Type",
         values="Total",
-        title="Claims by Meal Type"
-    ),
-    use_container_width=True
-)
+        title="Claims by Meal Type",
+        color_discrete_sequence=px.colors.qulitative.Pastel
+    )
+    st.plotly_chart(fig,
+    use_container_width=True)
