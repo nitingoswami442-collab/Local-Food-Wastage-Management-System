@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
+import ploty.express as px
 
 # Database Connection
 conn = sqlite3.connect("food_wastage.db", check_same_thread=False)
@@ -11,10 +12,10 @@ st.title("🍲 Local Food Wastage Management System")
 
 menu = st.sidebar.selectbox(
     "Select Option",
-    ["Home",
+    ["🏡Home",
      "Dashboard",
-     "Food Listings",
-     "Provider Contacts"
+     "🍱Food Listings",
+     "📡Provider Contacts"
     ]
 )
 
@@ -53,34 +54,78 @@ elif menu == "Dashboard":
     col3.metric("Food Listings", total_food)
     col4.metric("Claims", total_claims)
 
-    st.subheader("Claim Status")
+    st.subheader("🥧 Claims by Status")
 
-    claim_chart = pd.read_sql_query("""
-    SELECT Status,
-           COUNT(*) AS Total
-    FROM claims
-    GROUP BY Status
-    """, conn)
+claim_status = pd.read_sql_query("""
+SELECT Status,
+       COUNT(*) AS Total
+FROM claims
+GROUP BY Status
+""", conn)
 
-    st.bar_chart(
-        claim_chart.set_index("Status")
-    )
+st.plotly_chart(
+    px.pie(
+        claim_status,
+        names="Status",
+        values="Total",
+        title="Claims by Status"
+    ),
+    use_container_width=True
+)
 
-# Food Listings
-elif menu == "Food Listings":
-    st.header("Available Food Listings")
+st.subheader("📊 Food Available by Type")
 
-    food = pd.read_sql_query("SELECT * FROM food_listings", conn)
+food_type = pd.read_sql_query("""
+SELECT Food_Type,
+       COUNT(*) AS Total
+FROM food_listings
+GROUP BY Food_Type
+""", conn)
 
-    st.dataframe(food)
+st.plotly_chart(
+    px.bar(
+        food_type,
+        x="Food_Type",
+        y="Total",
+        title="Food Available by Type"
+    ),
+    use_container_width=True
+)
 
+st.subheader("🏢 Listings by Provider Type")
 
-elif menu == "Provider Contacts":
-    st.header("Provider Contacts")
+provider_type = pd.read_sql_query("""
+SELECT Provider_Type,
+       COUNT(*) AS Total
+FROM food_listings
+GROUP BY Provider_Type
+""", conn)
 
-    contacts = pd.read_sql_query(
-        "SELECT Name, City, Contact FROM providers",
-        conn
-    )
+st.plotly_chart(
+    px.bar(
+        provider_type,
+        x="Provider_Type",
+        y="Total",
+        title="Listings by Provider Type"
+    ),
+    use_container_width=True
+)
 
-    st.dataframe(contacts)# Paste the complete Streamlit code here
+st.subheader("🍽️ Claims by Meal Type")
+
+meal_type = pd.read_sql_query("""
+SELECT Meal_Type,
+       COUNT(*) AS Total
+FROM food_listings
+GROUP BY Meal_Type
+""", conn)
+
+st.plotly_chart(
+    px.pie(
+        meal_type,
+        names="Meal_Type",
+        values="Total",
+        title="Claims by Meal Type"
+    ),
+    use_container_width=True
+)
