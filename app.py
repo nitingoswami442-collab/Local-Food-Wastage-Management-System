@@ -69,7 +69,7 @@ fig = px.pie(
         values="Total",
         title="Claims by Status",
         
-        color_discrete_sequence=px.colors.qulitative.Set3
+        color_discrete_sequence=px.colors.qulitative.Bold
     )
 st.plotly_chart(fig,
     use_container_width=True)
@@ -107,7 +107,7 @@ fig = px.bar(
         x="Provider_Type",
         y="Total",
         title="Listings by Provider Type",
-        color_discrete_sequence=px.colors.qulitative.Set2
+        color_discrete_sequence=px.colors.qulitative.Pastel
     )
 st.plotly_chart(fig,
     use_container_width=True)
