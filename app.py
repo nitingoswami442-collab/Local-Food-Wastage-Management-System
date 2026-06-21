@@ -63,7 +63,7 @@ FROM claims
 GROUP BY Status
 """, conn)
 
-    fig = px.pie(
+fig = px.pie(
         claim_status,
         names="Status",
         values="Total",
