@@ -69,7 +69,6 @@ fig = px.pie(
         values="Total",
         title="Claims by Status",
         
-        color_discrete_sequence=px.colors.qulitative.Bold
     )
 st.plotly_chart(fig,
     use_container_width=True)
@@ -88,7 +87,6 @@ fig = px.bar(
         x="Food_Type",
         y="Total",
         title="Food Available by Type",
-        color_discrete_sequence=px.colors.qulitative.Bold
     )
 st.plotly_chart(fig,
     use_container_width=True)
@@ -107,7 +105,6 @@ fig = px.bar(
         x="Provider_Type",
         y="Total",
         title="Listings by Provider Type",
-        color_discrete_sequence=px.colors.qulitative.Pastel
     )
 st.plotly_chart(fig,
     use_container_width=True)
@@ -126,7 +123,6 @@ fig = px.pie(
         names="Meal_Type",
         values="Total",
         title="Claims by Meal Type",
-        color_discrete_sequence=px.colors.qulitative.Pastel
     )
 st.plotly_chart(fig,
     use_container_width=True)
