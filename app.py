@@ -83,7 +83,7 @@ FROM food_listings
 GROUP BY Food_Type
 """, conn)
 
-    fig = px.bar(
+fig = px.bar(
         food_type,
         x="Food_Type",
         y="Total",
@@ -102,7 +102,7 @@ FROM food_listings
 GROUP BY Provider_Type
 """, conn)
 
-    fig = px.bar(
+fig = px.bar(
         provider_type,
         x="Provider_Type",
         y="Total",
@@ -121,7 +121,7 @@ FROM food_listings
 GROUP BY Meal_Type
 """, conn)
 
-    fig = px.pie(
+fig = px.pie(
         meal_type,
         names="Meal_Type",
         values="Total",
